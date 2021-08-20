@@ -67,7 +67,9 @@ LOCAL_HEADER_LIBRARIES := libhardware_headers \
                           libacdb_headers \
                           libutils_headers \
                           qti_audio_kernel_uapi \
-                          libarpal_headers
+                          libarpal_headers \
+                          libaudio_extn_headers \
+                          libaudio_hal_headers
 
 LOCAL_SHARED_LIBRARIES := \
         libcutils \
@@ -85,6 +87,7 @@ LOCAL_MODULE_OWNER := qti
 LOCAL_ADDITIONAL_DEPENDENCIES += $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr
 
 LOCAL_C_INCLUDES := \
+<<<<<<< HEAD
         $(call project-path-for,qcom-audio)/primary-hal/hal \
         $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/include \
         $(call project-path-for,qcom-audio)/pal \
@@ -92,10 +95,15 @@ LOCAL_C_INCLUDES := \
         $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/techpack/audio/include \
         $(call include-path-for, audio-effects) \
         $(call project-path-for,qcom-audio)/primary-hal/hal/audio_extn/
+=======
+        $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/include \
+        $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/include/audio \
+        $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/techpack/audio/include \
+        $(call include-path-for, audio-effects)
+>>>>>>> 138d608e (audio-ar: compilation fix for KS sync path change.)
 
 ifeq ($(strip $(AUDIO_FEATURE_ENABLED_DLKM)),true)
   LOCAL_HEADER_LIBRARIES += audio_kernel_headers
-  LOCAL_C_INCLUDES += $(TARGET_OUT_INTERMEDIATES)/vendor/qcom/opensource/audio-kernel/include
 endif
 
 ifeq ($(TARGET_COMPILE_WITH_MSM_KERNEL),true)
@@ -177,8 +185,15 @@ LOCAL_CFLAGS+= -O2 -fvisibility=hidden
 
 LOCAL_HEADER_LIBRARIES := libhardware_headers \
                           libsystem_headers \
+<<<<<<< HEAD
                           libutils_headers \
                           libarpal_headers
+=======
+                          libarpal_headers \
+                          libutils_headers \
+                          libaudio_extn_headers \
+                          libaudio_hal_headers
+>>>>>>> 138d608e (audio-ar: compilation fix for KS sync path change.)
 
 LOCAL_SHARED_LIBRARIES := \
         libcutils \
@@ -195,19 +210,24 @@ LOCAL_MODULE_OWNER := qti
 LOCAL_ADDITIONAL_DEPENDENCIES += $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr
 
 LOCAL_C_INCLUDES := \
+<<<<<<< HEAD
         $(call project-path-for,qcom-audio)/primary-hal/hal \
         $(call project-path-for,qcom-audio)/pal \
+=======
+>>>>>>> 138d608e (audio-ar: compilation fix for KS sync path change.)
         $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/include \
         $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/include/audio \
         $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/techpack/audio/include \
         $(call include-path-for, audio-effects) \
         $(call include-path-for, audio-route) \
+<<<<<<< HEAD
         $(call project-path-for,qcom-audio)/primary-hal/hal/audio_extn \
+=======
+>>>>>>> 138d608e (audio-ar: compilation fix for KS sync path change.)
         system/media/audio_utils/include
 
 ifeq ($(strip $(AUDIO_FEATURE_ENABLED_DLKM)),true)
   LOCAL_HEADER_LIBRARIES += audio_kernel_headers
-  LOCAL_C_INCLUDES += $(TARGET_OUT_INTERMEDIATES)/vendor/qcom/opensource/audio-kernel/include
 endif
 
 ifeq ($(TARGET_COMPILE_WITH_MSM_KERNEL),true)
