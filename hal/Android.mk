@@ -33,6 +33,10 @@ ifeq ($(strip $(AUDIO_FEATURE_ENABLED_EC_REF_CAPTURE)),true)
 LOCAL_CFLAGS += -DEC_REF_CAPTURE_ENABLED
 endif
 
+ifeq ($(strip $(AUDIO_FEATURE_ENABLED_DYNAMIC_SR)),true)
+LOCAL_CFLAGS += -DDYNAMIC_SR_ENABLED
+endif
+
 LOCAL_CFLAGS += -Wno-macro-redefined
 LOCAL_CFLAGS += -DSOUND_TRIGGER_PLATFORM_NAME=$(TARGET_BOARD_PLATFORM)
 LOCAL_CFLAGS += -D_GNU_SOURCE
@@ -117,30 +121,3 @@ endif
 endif
 
 include $(BUILD_SHARED_LIBRARY)
-
-
-# Legacy USB AUDIO HAL
-ifneq ($(filter bengal,$(TARGET_BOARD_PLATFORM)),)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE := audio.usb.$(TARGET_BOARD_PLATFORM)
-LOCAL_MODULE_RELATIVE_PATH := hw
-LOCAL_MODULE_OWNER := qti
-LOCAL_VENDOR_MODULE := true
-
-LOCAL_SRC_FILES:= \
-        audio_usb_hal.c
-
-LOCAL_CFLAGS += \
-    -Wno-unused-parameter \
-
-LOCAL_SHARED_LIBRARIES := \
-     liblog \
-     libcutils \
-     libaudioutils \
-     libtinyalsa \
-     libalsautils
-
-LOCAL_HEADER_LIBRARIES += libhardware_headers
-include $(BUILD_SHARED_LIBRARY)
-endif
