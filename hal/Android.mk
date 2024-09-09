@@ -1,3 +1,4 @@
+ifneq ($(TARGET_PROVIDES_AUDIO_HAL),true)
 LOCAL_PATH := $(call my-dir)
 
 ifneq ($(TARGET_BOARD_SUFFIX),_515_32go)
@@ -129,3 +130,4 @@ endif
 endif
 
 include $(BUILD_SHARED_LIBRARY)
+endif
