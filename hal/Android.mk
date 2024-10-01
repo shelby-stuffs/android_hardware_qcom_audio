@@ -1,10 +1,10 @@
-ifneq ($(TARGET_PROVIDES_AUDIO_HAL),true)
 LOCAL_PATH := $(call my-dir)
 
 ifneq ($(TARGET_BOARD_SUFFIX),_515_32go)
 LOCAL_AUDIO_SERVICE_64 := taro parrot bengal holi blair
 endif #TARGET_BOARD_SUFFIX
 
+ifneq ($(TARGET_PROVIDES_AUDIO_HAL),true)
 include $(CLEAR_VARS)
 ifeq ($(call is-board-platform-in-list,$(LOCAL_AUDIO_SERVICE_64)), true)
 LOCAL_MODULE       := android.hardware.audio.service_64.rc
