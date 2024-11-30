@@ -84,7 +84,8 @@ AUDIO_FEATURE_ENABLED_SND_MONITOR := true
 AUDIO_FEATURE_ENABLED_USB_BURST_MODE := true
 AUDIO_FEATURE_ENABLED_SVA_MULTI_STAGE := true
 AUDIO_FEATURE_ENABLED_BATTERY_LISTENER := true
-AUDIO_FEATURE_ENABLED_DYNAMIC_SR := false 
+AUDIO_FEATURE_ENABLED_DYNAMIC_SR := false
+AUDIO_FEATURE_ENABLED_TRUE_STEREO := false
 BUILD_AUDIO_TECHPACK_SOURCE := true
 AUDIO_FEATURE_ENABLED_MCS := true
 ##AUDIO_FEATURE_FLAGS
@@ -399,10 +400,6 @@ vendor.audio.flac.sw.decoder.24bit=true
 #timeout duration updates to default timeout of 5sec once the system is ready.
 PRODUCT_PROPERTY_OVERRIDES += \
 vendor.audio.hal.boot.timeout.ms=20000
-
-#split a2dp DSP supported encoder list
-PRODUCT_PROPERTY_OVERRIDES += \
-persist.vendor.bt.a2dp_offload_cap=sbc-aptx-aptxtws-aptxhd-aac-ldac
 
 # A2DP offload support
 PRODUCT_PROPERTY_OVERRIDES += \
